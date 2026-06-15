@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+# traningsartefakter (ej i repot)
+train_xml/
+*.arrow
+modell/

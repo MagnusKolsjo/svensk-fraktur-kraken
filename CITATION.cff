@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this model, please cite it as below."
+title: "Swedish Fraktur — Kraken OCR/HTR model"
+abstract: >-
+  A Kraken recognition model for OCR of older Swedish text printed in Fraktur
+  (blackletter), fine-tuned from german_print on Språkbanken's "Svensk fraktur
+  1626-1816" corpus. Best validation accuracy 0.9880 (~1.2% CER).
+type: software
+authors:
+  - family-names: Kolsjö
+    given-names: Magnus
+version: "1.0.0"
+date-released: "2026-06-15"
+license: CC-BY-4.0
+keywords:
+  - OCR
+  - HTR
+  - Kraken
+  - Fraktur
+  - Swedish
+  - historical text
+references:
+  - type: data
+    title: "Svensk fraktur 1626-1816"
+    authors:
+      - name: "Språkbanken Text, University of Gothenburg"
+    doi: 10.23695/5sme-7437
+    license: CC-BY-4.0
+  - type: software
+    title: "german_print (OCR model for German prints)"
+    authors:
+      - family-names: Weil
+        given-names: Stefan
+      - family-names: Kamlah
+        given-names: Jan
+      - family-names: Schmidt
+        given-names: Thomas
+    doi: 10.5281/zenodo.10519596
+    license: CC0-1.0
+# Efter Zenodo-publicering: lagg till modellens egen DOI har, t.ex.
+# doi: 10.5281/zenodo.XXXXXXX

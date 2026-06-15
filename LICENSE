@@ -1,0 +1,23 @@
+SPDX-License-Identifier: CC-BY-4.0
+
+This model ("Swedish Fraktur — Kraken OCR/HTR model") is licensed under the
+Creative Commons Attribution 4.0 International License (CC-BY-4.0).
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Summary:         https://creativecommons.org/licenses/by/4.0/
+
+You are free to share and adapt the material for any purpose, even commercially,
+provided you give appropriate credit.
+
+Required attribution
+--------------------
+The model is fine-tuned on training data that is itself CC-BY-4.0. When you use
+or redistribute the model, retain this attribution:
+
+  Trained on "Svensk fraktur 1626-1816", Språkbanken Text, University of
+  Gothenburg (digitisation: Gothenburg University Library; transcription:
+  GREPECT), https://doi.org/10.23695/5sme-7437, licensed CC-BY-4.0.
+
+The base model "german_print" (Weil, Kamlah & Schmidt 2023,
+https://doi.org/10.5281/zenodo.10519596) is released under CC0-1.0; no
+attribution is legally required for it, but it is credited as good practice.
