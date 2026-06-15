@@ -1,85 +1,70 @@
----
-license: cc-by-4.0
-language:
-- sv
-tags:
-- kraken
-- htr
-- ocr
-- fraktur
-- swedish
-- historical
-pipeline_tag: image-to-text
----
+# Svensk fraktur — Kraken OCR/HTR-modell
 
-# Swedish Fraktur — Kraken OCR/HTR model
+En [Kraken](https://kraken.re)-igenkänningsmodell (`.mlmodel`) för **OCR av äldre
+svensk text tryckt i fraktur (blackletter)**. Den ger en diplomatarisk
+transkribering som bevarar historisk stavning, lång-s (ſ) och periodens stavning,
+och fungerar på skannade sidbilder.
 
-A [Kraken](https://kraken.re) recognition model (`.mlmodel`) for **OCR of older
-Swedish text printed in Fraktur (blackletter)**. It produces a diplomatic
-transcription that keeps historical orthography, the long s (ſ) and period
-spelling, and works on scanned page images.
+- **Fil:** `svensk_fraktur.mlmodel`
+- **Typ:** Kraken-igenkänningsmodell (baslinje/HTR-pipeline)
+- **Bästa valideringsträffsäkerhet:** 0,9880 (≈ 1,2 % CER) på en utbruten del
+- **Basmodell:** `german_print` (finjusterad från den)
+- **Träningsdata:** Språkbanken, *Svensk fraktur 1626–1816*
 
-- **File:** `svensk_fraktur.mlmodel`
-- **Type:** Kraken recognition model (baseline/HTR pipeline)
-- **Best validation accuracy:** 0.9880 (≈ 1.2 % CER) on a held-out split
-- **Base model:** `german_print` (fine-tuned from it)
-- **Training data:** Språkbanken, *Svensk fraktur 1626–1816*
+## Användning
 
-## Usage
-
-**Kraken (CLI):**
+**Kraken (kommandorad):**
 
 ```bash
-kraken -i page.jpg out.txt segment -bl ocr -m svensk_fraktur.mlmodel
+kraken -i sida.jpg ut.txt segment -bl ocr -m svensk_fraktur.mlmodel
 ```
 
-For multi-page PDFs, render pages to images first (e.g. ~300 DPI) and pass them
-to Kraken. **eScriptorium:** import the `.mlmodel` under *Models*.
+För flersidiga PDF:er: rendera sidorna till bilder först (t.ex. ~300 DPI) och
+skicka dem till Kraken. **eScriptorium:** importera `.mlmodel` under *Models*.
 
-## How it was trained
+## Hur den tränades
 
-Fine-tuned from `german_print` on the Språkbanken corpus *Svensk fraktur
-1626–1816* (199 page images with line-level diplomatic transcriptions). The page
-images were OCR-bootstrapped and the recognized lines aligned to the ground-truth
-line text (≈98 % coverage), producing PageXML for `ketos train`. A low learning
-rate (`-r 0.0001`) was decisive — it let the model improve steadily past epoch 0
-instead of drifting away from the strong starting point. See [`training/`](training/)
-for the scripts and exact commands.
+Finjusterad från `german_print` på Språkbankens korpus *Svensk fraktur 1626–1816*
+(199 sidbilder med radvisa diplomatariska transkriptioner). Sidbilderna OCR:ades
+med `german_print`, och de igenkända raderna alignerades mot facittexten radvis
+(≈98 % täckning) till PageXML för `ketos train`. En **låg inlärningstakt
+(`-r 0.0001`) var avgörande** — den lät modellen förbättras stadigt förbi epok 0
+i stället för att driva bort från den goda startpunkten. Se [`training/`](training/)
+för skript och exakta kommandon.
 
-The validation accuracy is measured on a held-out split of the same corpus and is
-therefore optimistic relative to entirely new documents; on a real volume
-(1600s Swedish Fraktur) it produced a near-flawless body-text transcription with
-preserved long-s and period spelling and no systematic substitution errors.
+Valideringssiffran är mätt på en utbruten del av samma korpus och är därför
+optimistisk jämfört med helt nya dokument; på en verklig volym (svensk fraktur
+från 1600-talet) gav den en nära felfri brödtext-transkribering med bevarat
+lång-s och periodstavning, utan systematiska substitutionsfel.
 
-## Limitations
+## Begränsningar
 
-- Trained on Swedish Fraktur print; not intended for handwriting or modern
-  (antiqua/roman) type.
-- Ornate/decorated title-page initials are read less reliably than body text.
-- Output is **diplomatic** (verbatim): historical spelling, long-s and printed
-  line-break hyphens are preserved. Modernisation/normalisation should happen in
-  a downstream step, not here.
+- Tränad på svensk frakturtryck; inte avsedd för handskrift eller modern stil
+  (antikva/roman).
+- Ornerade titelsidsinitialer läses mindre tillförlitligt än brödtext.
+- Utdatan är **diplomatarisk** (ordagrann): historisk stavning, lång-s och tryckta
+  radbrytnings-bindestreck bevaras. Modernisering/normalisering bör ske i ett
+  nedströmssteg, inte här.
 
-## Provenance, rights and attribution
+## Proveniens, rättigheter och attribution
 
-This is a derivative model. Full chain:
+Modellen är ett derivat. Hela kedjan:
 
-| Layer | Resource | By | DOI | License |
-|-------|----------|----|-----|---------|
-| Base model | german_print (OCR model for German prints) | S. Weil, J. Kamlah, T. Schmidt (2023) | [10.5281/zenodo.10519596](https://doi.org/10.5281/zenodo.10519596) | **CC0-1.0** |
-| Training data | Svensk fraktur 1626–1816 | Språkbanken Text, University of Gothenburg | [10.23695/5sme-7437](https://doi.org/10.23695/5sme-7437) | **CC-BY-4.0** |
+| Led | Resurs | Av | DOI | Licens |
+|-----|--------|----|-----|--------|
+| Basmodell | german_print (OCR-modell för tyskt tryck) | S. Weil, J. Kamlah, T. Schmidt (2023) | [10.5281/zenodo.10519596](https://doi.org/10.5281/zenodo.10519596) | **CC0-1.0** |
+| Träningsdata | Svensk fraktur 1626–1816 | Språkbanken Text, Göteborgs universitet | [10.23695/5sme-7437](https://doi.org/10.23695/5sme-7437) | **CC-BY-4.0** |
 
-The base model is **CC0** (no attribution legally required; cited as courtesy).
-The training data is **CC-BY-4.0**, which requires **attribution**. When you use
-or redistribute this model, please keep the following attribution:
+Basmodellen är **CC0** (ingen attribution krävs juridiskt; anges som god sed).
+Träningsdatan är **CC-BY-4.0**, vilket kräver **attribution**. När du använder
+eller sprider modellen, behåll följande attribution:
 
-> Trained on *Svensk fraktur 1626–1816*, Språkbanken Text, University of
-> Gothenburg (digitisation: Gothenburg University Library; transcription:
-> GREPECT), [doi.org/10.23695/5sme-7437](https://doi.org/10.23695/5sme-7437),
-> licensed CC-BY-4.0.
+> Tränad på *Svensk fraktur 1626–1816*, Språkbanken Text, Göteborgs universitet
+> (digitalisering: Göteborgs universitetsbibliotek; transkription: GREPECT),
+> [doi.org/10.23695/5sme-7437](https://doi.org/10.23695/5sme-7437), licens CC-BY-4.0.
 
-This model is released under **CC-BY-4.0** (see [`LICENSE`](LICENSE)).
+Modellen släpps under **CC-BY-4.0** (se [`LICENSE`](LICENSE)).
 
-## Citation
+## Citering
 
-See [`CITATION.cff`](CITATION.cff).
+Se [`CITATION.cff`](CITATION.cff).
