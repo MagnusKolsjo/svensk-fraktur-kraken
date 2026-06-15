@@ -21,11 +21,14 @@ spelling, and works on scanned page images.
 
 - **File:** `svensk_fraktur.mlmodel`
 - **Type:** Kraken recognition model (baseline/HTR pipeline)
+- **DOI:** [10.5281/zenodo.20702142](https://doi.org/10.5281/zenodo.20702142)
 - **Best validation accuracy:** 0.9880 (≈ 1.2 % CER) on a held-out split
 - **Base model:** `german_print` (fine-tuned from it)
 - **Training data:** Språkbanken, *Svensk fraktur 1626–1816*
 
 ## Usage
+
+Fetch the model directly from Zenodo: `kraken get 10.5281/zenodo.20702142`
 
 **Kraken (CLI):**
 

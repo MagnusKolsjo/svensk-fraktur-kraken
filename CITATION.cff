@@ -12,6 +12,7 @@ authors:
 version: "1.0.0"
 date-released: "2026-06-15"
 license: CC-BY-4.0
+doi: 10.5281/zenodo.20702142
 keywords:
   - OCR
   - HTR
@@ -37,5 +38,3 @@ references:
         given-names: Thomas
     doi: 10.5281/zenodo.10519596
     license: CC0-1.0
-# Efter Zenodo-publicering: lagg till modellens egen DOI har, t.ex.
-# doi: 10.5281/zenodo.XXXXXXX

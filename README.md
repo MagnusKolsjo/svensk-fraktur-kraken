@@ -7,11 +7,14 @@ och fungerar på skannade sidbilder.
 
 - **Fil:** `svensk_fraktur.mlmodel`
 - **Typ:** Kraken-igenkänningsmodell (baslinje/HTR-pipeline)
+- **DOI:** [10.5281/zenodo.20702142](https://doi.org/10.5281/zenodo.20702142)
 - **Bästa valideringsträffsäkerhet:** 0,9880 (≈ 1,2 % CER) på en utbruten del
 - **Basmodell:** `german_print` (finjusterad från den)
 - **Träningsdata:** Språkbanken, *Svensk fraktur 1626–1816*
 
 ## Användning
+
+Hämta modellen direkt från Zenodo: `kraken get 10.5281/zenodo.20702142`
 
 **Kraken (kommandorad):**
 
