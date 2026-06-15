@@ -1,5 +1,9 @@
 # Svensk fraktur — Kraken OCR/HTR-modell
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20702142.svg)](https://doi.org/10.5281/zenodo.20702142)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Model-yellow.svg)](https://huggingface.co/MagnusKolsjo/svensk-fraktur-kraken)
+
 En [Kraken](https://kraken.re)-igenkänningsmodell (`.mlmodel`) för **OCR av äldre
 svensk text tryckt i fraktur (blackletter)**. Den ger en diplomatarisk
 transkribering som bevarar historisk stavning, lång-s (ſ) och periodens stavning,
